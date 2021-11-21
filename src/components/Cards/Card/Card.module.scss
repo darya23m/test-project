@@ -1,0 +1,207 @@
+.card {
+  max-width: 352px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 32px;
+
+  &Bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &Top {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+}
+
+.type {
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 24px;
+  opacity: 0.5;
+}
+
+.name {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.cost {
+  display: flex;
+  align-items: flex-start;
+}
+
+.rate {
+  font-size: 30px;
+  line-height: 55px;
+  margin-right: 5px;
+}
+
+.price {
+  font-size: 60px;
+  line-height: 72px;
+}
+
+.buy {
+  width: 64px;
+  height: 56px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4BCFA0;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 16px;
+  cursor: pointer;
+
+  &:hover {
+    border: none;
+    background: #4BCFA0;
+    color: #FFFFFF;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card {
+    padding: 20px;
+
+    &Top {
+      margin-bottom: 25px;
+    }
+  }
+
+  .type {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  
+  .name {
+    font-size: 26px;
+    line-height: 30px;
+  }
+  
+  .rate {
+    font-size: 20px;
+    line-height: 40px;
+  }
+  
+  .price {
+    font-size: 34px;
+    line-height: 48px;
+  }
+
+  .buy {
+    width: 50px;
+    height: 38px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+
+    &Top {
+      margin-bottom: 15px;
+    }
+  }
+
+  .type {
+    line-height: 16px;
+  }
+  
+  .name {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  
+  .rate {
+    font-size: 14px;
+    line-height: 32px;
+  }
+  
+  .price {
+    font-size: 20px;
+    line-height: 35px;
+  }
+
+  .buy {
+    width: 40px;
+    height: 30px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 10px;
+
+    &Top {
+      margin-bottom: 10px;
+    }
+  }
+
+  .type {
+    font-size: 10px;
+    line-height: 18px;
+  }
+  
+  .name {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
+  .rate {
+    font-size: 12px;
+    line-height: 37px;
+  }
+  
+  .price {
+    font-size: 20px;
+    line-height: 40px;
+  }
+
+  .buy {
+    width: 43px;
+    height: 32px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .card {
+    &Top {
+      text-align: center;
+    }
+
+    &Bottom {
+      flex-direction: column;
+    }
+  }
+
+  .type {
+    font-size: 10px;
+    line-height: 18px;
+  }
+  
+  .name {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .rate {
+    font-size: 13px;
+    line-height: 36px;
+  }
+  
+  .price {
+    font-size: 20px;
+    line-height: 38px;
+  }
+}
