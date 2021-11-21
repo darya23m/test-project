@@ -51,7 +51,7 @@
 
   &Error {
     border-color: #D21232;
-    background-image: url('./svg/error.svg');
+    background-image: url('./img/error.svg');
     background-repeat: no-repeat;
     background-position: 96%;
   }
@@ -66,6 +66,18 @@
   font-size: 12px;
   line-height: 16px;
   color: #E43F3F;
+}
+
+.successMessage {
+  color: #4BCFA0;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 48px;
+}
+
+.doneImg {
+  width: 80px;
+  height: auto;
 }
 
 .order {
@@ -83,9 +95,16 @@
 
   &:hover {
     background-color: #50DAA8;
-    background-image: url('./svg/arrow-right.svg');
+    background-image: url('./img/arrow-right.svg');
     background-repeat: no-repeat;
     background-position: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .successMessage {
+    font-size: 24px;
+    line-height: 38px;
   }
 }
 

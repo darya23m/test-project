@@ -34,26 +34,33 @@ const Cards = () => {
   }
 
   const renderModal = () => (
-    <div className={styles.modal}>
+    <div>
       <Modal hideModal={() => setIsModalShown(false)} data={modalContents} />
     </div>
   );
 
   const renderCards = () => 
     products.map((product, index) =>     
-      <li key={index} className={styles.card}>
+      <li key={index}>
         <Card data={product} showModal={showModal} />
       </li>
     );
   
   return (
-  <>
-    <ul className={styles.productsList}>
-      {renderCards()}
-    </ul>
-    <button type="button" className={styles.cheepest} onClick={() => showModal(buyCheapestProduct())}>Buy cheapest</button>
-    {isModalShown && renderModal()}
-  </>);
+    <>
+      <ul className={styles.productsList}>
+        {renderCards()}
+      </ul>
+      <button
+        type="button" 
+        className={styles.cheapest} 
+        onClick={() => showModal(buyCheapestProduct())}
+      >
+        Buy cheapest
+      </button>
+      {isModalShown && renderModal()}
+    </>
+  );
 };
 
 export default Cards;

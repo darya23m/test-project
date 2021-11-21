@@ -5,7 +5,6 @@ import Cards from './components/Cards/Cards';
 
 function App() {
 
-
   return (
     <div className={styles.container}>
       <Cards />

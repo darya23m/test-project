@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 import styles from './OrderForm.module.scss';
 import cx from 'classnames';
+import { ReactComponent as Done } from './img/Done.svg';
 
 const OrderForm = ({ data, hideModal }) => {
+  const [isFormSuccessfulySubmitted, setIsFormSuccessfulySubmitted] = useState(false);
 
-  // Form fields
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
 
-  // Form validations
   const [isNameValid, setIsNameValid] = useState(false);
   const [isContactValid, setIsContactValid] = useState(false);
   const [nameErrors, setNameErrors] = useState([]);
@@ -17,12 +17,17 @@ const OrderForm = ({ data, hideModal }) => {
  
   const validateName = () => {
     let errors = [];
-    const nameRegEx = /^[a-zA-Z]+$/;
+    const nameRegEx = /^[a-zA-ZА-Яа-я]+$/;
 
-    if (name.length === 0) errors.push('This field in required');
-    else if (!nameRegEx.test(name)) errors.push('Only letters allowed');
+    if (name.length === 0) {
+      errors.push('This field in required')
+    } else if (!nameRegEx.test(name)) {
+      errors.push('Only letters allowed')
+    };
 
-    if (errors.length === 0) setIsNameValid(true);
+    if (errors.length === 0) {
+      setIsNameValid(true)
+    };
     setNameErrors(errors);
     return errors;
   }
@@ -31,11 +36,17 @@ const OrderForm = ({ data, hideModal }) => {
     let errors = [];
     const phoneRegEx = /^\d+$/;
  
-    if (contact.length === 0) errors.push('This field in required');
-    else if (!phoneRegEx.test(contact)) errors.push('Only numbers allowed');
-    else if (contact.length !== 12) errors.push('Should contain 12 characters');
+    if (contact.length === 0) {
+      errors.push('This field in required')
+    } else if (!phoneRegEx.test(contact)) {
+      errors.push('Only numbers allowed')
+    } else if (contact.length !== 12) {
+      errors.push('Should contain 12 characters')
+    };
  
-    if (errors.length === 0) setIsContactValid(true);
+    if (errors.length === 0) {
+      setIsContactValid(true)
+    };
     setContactErrors(errors);
     return errors;
   }
@@ -58,28 +69,32 @@ const OrderForm = ({ data, hideModal }) => {
     setIsContactValid(false);
   }
 
-  // Form handlers
   const handleSubmit = (e) => {
     e.preventDefault();
     const isFormValid = validateForm();
 
     if (isFormValid) {
-      // Log result
       console.log(name, contact);
-      hideModal();
+      setIsFormSuccessfulySubmitted(true);
     }
   };
 
-  // Helpers
-
-  return (
-    <div className={styles.container}>
+  const renderForm = () => (
+    <>
       <div className={styles.orderedGood}>
-        <div className={styles.type}>{data.category}</div>
-        <div className={styles.name}>{data.name}</div>
+        <div className={styles.type}>
+          {data.category}
+        </div>
+        <div className={styles.name}>
+          {data.name}
+        </div>
         <div className={styles.cost}>
-          <div className={styles.rate}>$</div>
-          <div className={styles.price}>{data.price}</div>
+          <div className={styles.rate}>
+            $
+          </div>
+          <div className={styles.price}>
+            {data.price}
+          </div>
         </div>
       </div>
       <form onSubmit={handleSubmit}>
@@ -97,7 +112,10 @@ const OrderForm = ({ data, hideModal }) => {
             onChange={e => setName(e.target.value)}
             onFocus={resetNameValidator}
             onBlur={validateName} />
-          {(nameErrors.length > 0) && <div className={styles.errors}>{nameErrors}</div>}
+          {(nameErrors.length > 0) && 
+          (<div className={styles.errors}>
+            {nameErrors}
+          </div>)}
         </div>
         <div className={styles.inputWrapper}>
           <input 
@@ -113,10 +131,31 @@ const OrderForm = ({ data, hideModal }) => {
             onChange={e => setContact(e.target.value)}
             onFocus={resetContactValidator}
             onBlur={validateContact} />
-            {(contactErrors.length > 0) && <div className={styles.errors}>{contactErrors}</div>}
+            {(contactErrors.length > 0) && 
+            (<div className={styles.errors}>
+              {contactErrors}
+            </div>)}
         </div>
-        <button type='submit' className={styles.order}>Order</button>
+        <button 
+          type='submit' 
+          className={styles.order}
+        >
+          Order
+        </button>
       </form>
+    </>
+  );
+
+  const renderSuccessMessage = () => (
+    <div>
+      <div className={styles.successMessage}>Your order has successfully placed.</div>
+      <Done className={styles.doneImg} />
+    </div>
+  );
+
+  return (
+    <div className={styles.container}>
+      { isFormSuccessfulySubmitted ? renderSuccessMessage() : renderForm() }
     </div>
   );
 };
